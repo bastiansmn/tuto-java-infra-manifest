@@ -49,7 +49,10 @@ spec:
             - name: "POSTGRES_USER"
               value: "userdemomanifest"
             - name: "POSTGRES_PASSWORD"
-              value: "My$ecrETPAss0rd*"
+              valueFrom:
+                secretKeyRef:
+                  key: password
+                  name: postgres-secret
             - name: POSTGRESQL_DATABASE
               value: "demo"
           volumeMounts:

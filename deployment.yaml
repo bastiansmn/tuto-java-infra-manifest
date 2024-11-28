@@ -25,7 +25,10 @@ spec:
             - name: SPRING_DATASOURCE_USERNAME
               value: "userdemomanifest"
             - name: SPRING_DATASOURCE_PASSWORD
-              value: "My$ecrETPAss0rd*"
+              valueFrom:
+                secretKeyRef:
+                  key: password
+                  name: postgres-secret
             - name: SPRING_DATASOURCE_URL
               value: jdbc:postgresql://postgres-manifest:5432/demo
           resources:
